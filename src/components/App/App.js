@@ -30,9 +30,9 @@ export const App = () => {
     }
   };
 
-  const total = good + neutral + bad;
-  const positivePercentage = Math.round((good / total) * 100);
   const options = { good, neutral, bad };
+  const total = Object.values(options).reduce((acc, val) => acc + val, 0);
+  const positivePercentage = Math.round((good / total) * 100);
 
   return (
     <Box ml={[4]}>
