@@ -2,13 +2,9 @@ import PropTypes from 'prop-types';
 import { Button, ButtonWraper } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const optionNames = Object.keys(options).map(option => {
-    return option.charAt(0).toUpperCase() + option.slice(1);
-  });
-
   return (
     <ButtonWraper>
-      {optionNames.map(option => (
+      {options.map(option => (
         <Button
           key={option}
           type="button"
@@ -22,6 +18,6 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.object,
-  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
 };

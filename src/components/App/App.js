@@ -33,12 +33,18 @@ export const App = () => {
   const options = { good, neutral, bad };
   const total = Object.values(options).reduce((acc, val) => acc + val, 0);
   const positivePercentage = Math.round((good / total) * 100);
+  const optionNames = Object.keys(options).map(option => {
+    return option.charAt(0).toUpperCase() + option.slice(1);
+  });
 
   return (
     <Box ml={[4]}>
       <GlobalStyles />
       <Section title="Please leave feedback">
-        <FeedbackOptions options={options} onLeaveFeedback={handleFeedback} />
+        <FeedbackOptions
+          options={optionNames}
+          onLeaveFeedback={handleFeedback}
+        />
       </Section>
       <Section title="Statistics">
         {total !== 0 ? (
